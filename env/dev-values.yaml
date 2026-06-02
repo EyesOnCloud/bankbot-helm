@@ -1,10 +1,16 @@
 chat:
+  replicaCount: 1
   image:
     tag: dev
+  service:
+    type: NodePort
 
 riskApi:
+  replicaCount: 1
   image:
     tag: dev
+  service:
+    type: NodePort
 
 persistence:
   size: 1Gi

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chat
+spec:
+  replicas: {{ .Values.chat.replicaCount }}
+  selector:
+    matchLabels:
+      app: chat
+  template:
+    metadata:
+      labels:
+        app: chat
+    spec:
+      containers:
+      - name: chat
+        image: "{{ .Values.chat.image.repository }}:{{ .Values.chat.image.tag }}"
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        env:
+        - name: RISK_API_URL
+          value: "http://risk-api:{{ .Values.riskApi.service.port }}"
+        volumeMounts:
+        - name: chat-data
+          mountPath: /data
+      volumes:
+      - name: chat-data
+        persistentVolumeClaim:
+          claimName: chat-pvc

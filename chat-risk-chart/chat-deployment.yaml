@@ -24,6 +24,13 @@ spec:
         volumeMounts:
         - name: chat-data
           mountPath: /data
+        resources:
+          requests:
+            cpu: "{{ .Values.chat.resources.requests.cpu }}"
+            memory: "{{ .Values.chat.resources.requests.memory }}"
+          limits:
+            cpu: "{{ .Values.chat.resources.limits.cpu }}"
+            memory: "{{ .Values.chat.resources.limits.memory }}"
       volumes:
       - name: chat-data
         persistentVolumeClaim:

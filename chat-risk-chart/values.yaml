@@ -1,20 +1,20 @@
 chat:
   replicaCount: 1
   image:
-    repository: docker.io/acme/chat
-    tag: latest
+    repository: eyesoncloud/chat-api
+    tag: dev
   service:
-    type: ClusterIP
-    port: 8080
+    type: NodePort
+    port: 8000
 
 riskApi:
   replicaCount: 1
   image:
-    repository: docker.io/acme/risk-api
-    tag: v3
+    repository: eyesoncloud/risk-api
+    tag: dev
   service:
     type: ClusterIP
-    port: 8000
+    port: 8001
 
 persistence:
   size: 1Gi

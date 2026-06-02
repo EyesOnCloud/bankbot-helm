@@ -16,5 +16,14 @@ spec:
       - name: risk-api
         image: "{{ .Values.riskApi.image.repository }}:{{ .Values.riskApi.image.tag }}"
         imagePullPolicy: IfNotPresent
+
         ports:
-        - containerPort: 8001
+        - containerPort: {{ .Values.riskApi.service.port }}
+
+        resources:
+          requests:
+            cpu: "{{ .Values.riskApi.resources.requests.cpu }}"
+            memory: "{{ .Values.riskApi.resources.requests.memory }}"
+          limits:
+            cpu: "{{ .Values.riskApi.resources.limits.cpu }}"
+            memory: "{{ .Values.riskApi.resources.limits.memory }}"

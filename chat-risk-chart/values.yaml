@@ -1,0 +1,24 @@
+chat:
+  replicaCount: 1
+
+  image:
+    repository: eyesoncloud/chat-api
+    tag: dev
+
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+    limits:
+      cpu: "200m"
+      memory: "256Mi"
+
+riskApi:
+  replicaCount: 1
+
+  image:
+    repository: eyesoncloud/risk-api
+    tag: dev
+
+persistence:
+  size: 1Gi

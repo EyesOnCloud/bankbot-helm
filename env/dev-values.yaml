@@ -1,0 +1,10 @@
+chat:
+  image:
+    tag: dev
+
+riskApi:
+  image:
+    tag: dev
+
+persistence:
+  size: 1Gi

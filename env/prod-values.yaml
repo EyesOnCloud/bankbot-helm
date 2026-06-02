@@ -1,7 +1,16 @@
 chat:
+  replicaCount: 1
   image:
-    tag: 1.0.0
-  replicaCount: 3
+    tag: dev
+  service:
+    type: NodePort
+
+riskApi:
+  replicaCount: 1
+  image:
+    tag: dev
+  service:
+    type: NodePort
 
   resources:
     requests:
@@ -11,10 +20,5 @@ chat:
       cpu: "1"
       memory: "1Gi"
 
-riskApi:
-  image:
-    tag: 1.0.0
-  replicaCount: 3
-
 persistence:
-  size: 5Gi
+  size: 1Gi

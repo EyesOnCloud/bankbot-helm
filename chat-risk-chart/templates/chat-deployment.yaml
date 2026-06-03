@@ -17,13 +17,25 @@ spec:
         image: "{{ .Values.chat.image.repository }}:{{ .Values.chat.image.tag }}"
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 8000
+        - containerPort: {{ .Values.chat.service.port }}
         env:
+        - name: APP_ENV
+          value: "{{ .Values.chat.env.APP_ENV }}"
+        - name: BOT_NAME
+          value: "{{ .Values.chat.env.BOT_NAME }}"
+        - name: SYSTEM_PROMPT
+          value: "{{ .Values.chat.env.SYSTEM_PROMPT }}"
         - name: RISK_API_URL
           value: "http://risk-api:{{ .Values.riskApi.service.port }}"
+        - name: MODEL_DIR
+          value: "/model"
+        - name: LOG_DIR
+          value: "/shared/logs"
         volumeMounts:
         - name: chat-data
-          mountPath: /data
+          mountPath: /model
+        - name: chat-data
+          mountPath: /shared/logs
         resources:
           requests:
             cpu: "{{ .Values.chat.resources.requests.cpu }}"

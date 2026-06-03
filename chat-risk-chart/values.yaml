@@ -6,6 +6,10 @@ chat:
   service:
     type: NodePort
     port: 8000
+  env:
+    APP_ENV: dev
+    BOT_NAME: BankBot
+    SYSTEM_PROMPT: "You are a banking support assistant."
   resources:
     requests:
       cpu: "100m"
@@ -22,6 +26,10 @@ riskApi:
   service:
     type: ClusterIP
     port: 8001
+  env:
+    APP_ENV: dev
+    MODEL_NAME: RiskModel
+    RISK_THRESHOLD: "0.6"
   resources:
     requests:
       cpu: "100m"
@@ -31,4 +39,5 @@ riskApi:
       memory: "256Mi"
 
 persistence:
+  storageClass: nfs-client
   size: 1Gi

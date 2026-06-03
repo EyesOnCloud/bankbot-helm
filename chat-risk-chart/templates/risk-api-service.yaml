@@ -7,5 +7,5 @@ spec:
     app: risk-api
   ports:
   - port: {{ .Values.riskApi.service.port }}
-    targetPort: 8001
+    targetPort: {{ .Values.riskApi.service.port }}
   type: {{ .Values.riskApi.service.type }}

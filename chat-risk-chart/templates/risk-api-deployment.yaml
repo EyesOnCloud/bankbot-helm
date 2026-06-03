@@ -15,7 +15,7 @@ spec:
       containers:
       - name: risk-api
         image: "{{ .Values.riskApi.image.repository }}:{{ .Values.riskApi.image.tag }}"
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         ports:
         - containerPort: {{ .Values.riskApi.service.port }}
         env:

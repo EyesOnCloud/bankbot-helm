@@ -1,6 +1,6 @@
 apiVersion: v2
 name: risk-chat
-description: Helm chart for Risk API v1 and Chat v3 services
+description: Chat and Risk application.
 type: application
 version: 0.1.0
 appVersion: "1.0"

@@ -15,7 +15,7 @@ spec:
       containers:
       - name: chat
         image: "{{ .Values.chat.image.repository }}:{{ .Values.chat.image.tag }}"
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         ports:
         - containerPort: {{ .Values.chat.service.port }}
         env:

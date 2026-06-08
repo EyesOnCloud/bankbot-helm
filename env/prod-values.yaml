@@ -1,16 +1,38 @@
 chat:
-  replicaCount: 1
+  replicaCount: 2
+
   image:
-    tag: dev
+    tag: prod
+
   service:
     type: NodePort
 
+  env:
+    APP_ENV: prod
+    BOT_NAME: BankBot-Prod
+    SYSTEM_PROMPT: "You are a production banking support assistant."
+
+  resources:
+    requests:
+      cpu: "500m"
+      memory: "512Mi"
+    limits:
+      cpu: "1"
+      memory: "1Gi"
+
 riskApi:
-  replicaCount: 1
+  replicaCount: 2
+
   image:
-    tag: dev
+    tag: prod
+
   service:
     type: NodePort
+
+  env:
+    APP_ENV: prod
+    MODEL_NAME: RiskModel
+    RISK_THRESHOLD: "0.8"
 
   resources:
     requests:
